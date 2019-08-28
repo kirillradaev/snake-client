@@ -15,11 +15,11 @@ const connect = function() {
   // conn.on('connect', () => {
   //   conn.write('Move: up');
   // });
-  conn.on('connect', () => {
-    setInterval(function(){
-    conn.write('Move: left')}, 50);
-  });
-  
+  // conn.on('connect', () => {
+  //   setInterval(function(){
+  //   conn.write('Move: left')}, 50);
+  // });
+
   conn.setEncoding('utf8'); 
   conn.on('data', (data) => {
     console.log(data);
