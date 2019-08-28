@@ -9,7 +9,17 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log('Successfully connected to game server')
   });
-  conn.write('Name: GOD')
+  conn.on('connect', () => {
+    conn.write('Name: KVR');
+  });
+  // conn.on('connect', () => {
+  //   conn.write('Move: up');
+  // });
+  conn.on('connect', () => {
+    setInterval(function(){
+    conn.write('Move: left')}, 50);
+  });
+  
   conn.setEncoding('utf8'); 
   conn.on('data', (data) => {
     console.log(data);
@@ -17,7 +27,5 @@ const connect = function() {
   return conn;
 }
 
-// console.log('Connecting ...');
-// connect();
-
 module.exports = connect;
+
