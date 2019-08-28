@@ -21,6 +21,12 @@ const setupInput = function(conn) {
   stdin.on("data", (data) => {
     moveRigth(data);
   })
+  stdin.on("data", (data) => {
+    wannaPlay(data);
+  })
+  stdin.on("data", (data) => {
+    oneDown(data);
+  })
   return stdin;
 }
 
@@ -45,10 +51,24 @@ const moveLeft = function (data) {
     connection.write('Move: left');
   }
 }
+
 const moveRigth = function (data) {
   if (data === 'd') {
     connection.write('Move: right');
   }
 }
+
+const wannaPlay = function (data) {
+  if (data === 't') {
+    connection.write('Say: wanna play?');
+  }
+}
+
+const oneDown = function (data) {
+  if (data === 'y') {
+    connection.write('Say: one down!');
+  }
+}
+
 
 module.exports = setupInput;
